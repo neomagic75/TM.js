@@ -12,6 +12,7 @@
       border: 1px solid #ccc;
       padding: 10px;
       z-index: 1000;
+      color: #000000; // This ensures text is visible (black)
     `;
     contextManagerDiv.innerHTML = `
       <h3>Context Manager</h3>
