@@ -16,11 +16,32 @@
       font-family: Arial, sans-serif;
       border-radius: 5px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      max-height: 80vh;
+      overflow-y: auto;
     `;
-    contextManagerDiv.innerHTML = `
-      <h3 style="margin-top: 0; margin-bottom: 10px;">Context Manager</h3>
-      <p style="margin: 5px 0;">Status: <span id="extension-status">Active</span></p>
-      <button id="test-button" style="
+    
+    // Sample context data (replace with actual data later)
+    const contexts = {
+      Logs: ['Mission Log', 'Side Hustle Log', 'NPC Log', 'Knowledge Log'],
+      Briefs: ['Mission Brief', 'Side Hustle Brief', 'NPC Brief', 'Knowledge Brief']
+    };
+
+    let contextHTML = '<h3 style="margin-top: 0; margin-bottom: 10px;">Context Manager</h3>';
+    
+    for (const [category, items] of Object.entries(contexts)) {
+      contextHTML += `<h4>${category}</h4>`;
+      items.forEach(item => {
+        contextHTML += `
+          <div>
+            <input type="checkbox" id="${item.replace(/\s+/g, '-')}" name="${item}">
+            <label for="${item.replace(/\s+/g, '-')}">${item}</label>
+          </div>
+        `;
+      });
+    }
+
+    contextHTML += `
+      <button id="apply-context" style="
         background-color: #4CAF50;
         border: none;
         color: white;
@@ -29,15 +50,20 @@
         text-decoration: none;
         display: inline-block;
         font-size: 14px;
-        margin: 4px 2px;
+        margin: 10px 2px;
         cursor: pointer;
         border-radius: 3px;
-      ">Test Button</button>
+      ">Apply Context</button>
     `;
+
+    contextManagerDiv.innerHTML = contextHTML;
     document.body.appendChild(contextManagerDiv);
 
-    document.getElementById('test-button').addEventListener('click', function() {
-      alert('Context Manager Extension is working!');
+    document.getElementById('apply-context').addEventListener('click', function() {
+      const selectedContexts = Array.from(document.querySelectorAll('#context-manager input[type="checkbox"]:checked'))
+        .map(checkbox => checkbox.name);
+      alert('Selected contexts: ' + selectedContexts.join(', '));
+      // TODO: Implement context injection logic here
     });
   }
 
