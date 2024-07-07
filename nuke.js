@@ -8,16 +8,31 @@
       position: fixed;
       top: 10px;
       right: 10px;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
+      background-color: #2c2c2c;
+      border: 1px solid #444;
       padding: 10px;
       z-index: 1000;
-      color: #000000; // This ensures text is visible (black)
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     `;
     contextManagerDiv.innerHTML = `
-      <h3>Context Manager</h3>
-      <p>Status: <span id="extension-status">Active</span></p>
-      <button id="test-button">Test Button</button>
+      <h3 style="margin-top: 0; margin-bottom: 10px;">Context Manager</h3>
+      <p style="margin: 5px 0;">Status: <span id="extension-status">Active</span></p>
+      <button id="test-button" style="
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 3px;
+      ">Test Button</button>
     `;
     document.body.appendChild(contextManagerDiv);
 
